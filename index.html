@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexo Financeira</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="introModal" class="modal" style="display: none">
+      <div class="modal-content">
+        <span class="close-button" onclick="closeIntroModal()">×</span>
+        <h2>Bem-vindo(a) ao Nexo Financeira</h2>
+        <p>Veja como utilizar as principais funções:</p>
+        <ul>
+          <li>
+            <strong>Criar Conta:</strong> Escolha o tipo de conta, informe seu
+            nome e crie uma senha.
+          </li>
+          <li>
+            <strong>Gerenciar Conta:</strong> Use o número da conta para
+            visualizar saldo, fazer depósitos, saques e solicitar empréstimos.
+          </li>
+          <li>
+            <strong>Empréstimo:</strong> Disponível para contas Empresarial e
+            Premium. Clique em "Empréstimo" e siga as instruções para confirmar.
+          </li>
+          <li>
+            <strong>Extrato:</strong> Após realizar uma transação, você pode
+            baixar o extrato da conta em PDF.
+          </li>
+        </ul>
+        <button onclick="closeIntroModal()" class="modal-button">
+          Entendi
+        </button>
+      </div>
+    </div>
+
+    <div class="container">
+      <header>
+        <img
+          src="assets/2-removebg-preview.png"
+          alt="Logotipo Nexo Financeira"
+          class="logo"
+        />
+        <h1>Nexo Financeira</h1>
+      </header>
+
+      <main>
+        <section class="account-creation">
+          <h2>Criar Nova Conta</h2>
+
+          <select id="accountType">
+            <option value="ContaPessoal">Conta Pessoal</option>
+            <option value="ContaEmpresarial">Conta Empresarial</option>
+            <option value="ContaPremium">Conta Premium</option>
+          </select>
+
+          <form id="accountForm" onsubmit="return validateForm()">
+            <input
+              type="text"
+              id="name"
+              placeholder="Nome do Titular"
+              required
+            />
+            <small
+              id="nameError"
+              class="error-message"
+              style="display: none; color: red"
+              >Apenas letras são permitidas.</small
+            >
+            <small
+              id="usernameExistsMessage"
+              class="error-message"
+              style="display: none; color: red"
+              >A conta com esse nome já foi criada.</small
+            >
+
+            <span id="nameCheckmark" style="display: none; color: green"
+              >✔</span
+            >
+            <span id="nameErrorIcon" style="display: none; color: red">✖</span>
+
+            <label for="accountNumber"></label>
+            <input
+              type="password"
+              id="accountNumber"
+              maxlength="6"
+              placeholder="Senha"
+              required
+            />
+            <small
+              id="passwordError"
+              class="error-message"
+              style="display: none; color: red"
+              >A senha deve ter 6 caracteres, incluindo letras, números e um
+              caractere especial.</small
+            >
+            <span id="passwordCheckmark" style="display: none; color: green"
+              >✔</span
+            >
+
+            <button type="submit">Criar Conta</button>
+          </form>
+        </section>
+
+        <section class="account-actions">
+          <h2>Gerenciar Conta</h2>
+          <p
+            id="welcomeMessage"
+            style="
+              display: none;
+              font-size: 18px;
+              color: #ffffff;
+              margin-top: 10px;
+            "
+          ></p>
+          <input
+            type="number"
+            id="accountId"
+            placeholder="Número da Conta"
+            required
+          />
+          <button id="showBalanceButton">Acessar conta</button>
+          <div class="button-group">
+            <button id="depositButton" style="display: none">Depositar</button>
+            <button id="sacarButton" style="display: none">Sacar</button>
+            <button id="loanButton" style="display: none">Empréstimo</button>
+          </div>
+
+          <div
+            class="transaction"
+            id="transactionContainer"
+            style="display: none"
+          >
+            <input type="number" id="transactionAmount" placeholder="Valor" />
+            <p
+              id="message"
+              class="success-message"
+              style="display: none; color: green"
+            >
+              Saque realizado com sucesso!
+            </p>
+          </div>
+
+          <div id="balanceContainer" style="display: none">
+            <p id="balanceText">
+              Saldo: <span id="balanceAmount">R$0.00</span>
+              <span
+                id="toggleBalanceIcon"
+                style="cursor: pointer; margin-left: 10px"
+                >👁️</span
+              >
+            </p>
+          </div>
+
+          <div
+            id="loanConfirmation"
+            style="
+              display: none;
+              background: #245767;
+              color: white;
+              padding: 20px;
+              border-radius: 8px;
+              max-width: 300px;
+              margin-top: 20px;
+              text-align: center;
+            "
+          >
+            <p id="loanMessage">Valor do empréstimo:</p>
+            <button
+              onclick="confirmLoan()"
+              style="
+                margin: 10px;
+                padding: 8px 16px;
+                background-color: #4caf50;
+                color: white;
+                border: none;
+                border-radius: 4px;
+              "
+            >
+              Confirmar
+            </button>
+            <button
+              onclick="cancelLoan()"
+              style="
+                margin: 10px;
+                padding: 8px 16px;
+                background-color: #f44336;
+                color: white;
+                border: none;
+                border-radius: 4px;
+              "
+            >
+              Cancelar
+            </button>
+          </div>
+
+          <div
+            id="downloadConfirmation"
+            style="
+              display: none;
+              background: #245767;
+              color: white;
+              padding: 20px;
+              border-radius: 8px;
+              max-width: 300px;
+              margin-top: 20px;
+              text-align: center;
+            "
+          >
+            <p>Deseja baixar o extrato da conta?</p>
+            <button
+              id="confirmDownload"
+              style="
+                margin: 10px;
+                padding: 8px 16px;
+                background-color: #4caf50;
+                color: white;
+                border: none;
+                border-radius: 4px;
+              "
+            >
+              Sim
+            </button>
+            <button
+              id="cancelDownload"
+              style="
+                margin: 10px;
+                padding: 8px 16px;
+                background-color: #f44336;
+                color: white;
+                border: none;
+                border-radius: 4px;
+              "
+            >
+              Não
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  </body>
+</html>
