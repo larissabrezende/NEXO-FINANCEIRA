@@ -377,10 +377,10 @@ function displayPopupMessage(id, message, bgColor) {
   const popup = document.createElement("div");
   popup.id = id;
   popup.className = "popup-message";
-  popup.style.backgroundColor = bgColor; 
+  popup.style.backgroundColor = bgColor;
   popup.textContent = message;
   document.body.appendChild(popup);
-  setTimeout(() => popup.remove(), 5000);
+  setTimeout(() => popup.remove(), 2000);
 }
 
 function updateBalanceMessage(balance) {
