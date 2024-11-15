@@ -22,7 +22,8 @@ body {
   flex-direction: column;
 }
 
-#downloadConfirmation, #loanConfirmation {
+#downloadConfirmation,
+#loanConfirmation {
   display: none;
   position: fixed;
   top: 35%;
@@ -77,6 +78,20 @@ body {
   max-width: 400px;
   border-radius: 8px;
   text-align: center;
+}
+
+.modal-content ul {
+  list-style-position: inside;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.modal-content li {
+  padding-left: 10px;
+}
+
+.list-modal {
+  text-align: left;
 }
 
 .close-button {
@@ -162,7 +177,8 @@ section {
 h1 {
   font-family: "Exo 2", sans-serif;
   color: #f3fadc;
-  text-shadow: 0 0 5px #11ca91, 0 0 10px #11ca91, 0 0 15px rgba(157, 205, 90, 0.7);
+  text-shadow: 0 0 5px #11ca91, 0 0 10px #11ca91,
+    0 0 15px rgba(157, 205, 90, 0.7);
 }
 
 h2 {
@@ -170,7 +186,8 @@ h2 {
   color: #11ca91;
 }
 
-h1, h2 {
+h1,
+h2 {
   margin-bottom: 10px;
 }
 
@@ -179,7 +196,8 @@ form {
   flex-direction: column;
 }
 
-input, select {
+input,
+select {
   padding: 10px;
   margin: 10px 0;
   border: none;
@@ -187,7 +205,9 @@ input, select {
   font-size: 16px;
 }
 
-input[type="text"], input[type="number"], input[type="password"] {
+input[type="text"],
+input[type="number"],
+input[type="password"] {
   background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
   backdrop-filter: blur(3px);
@@ -199,11 +219,13 @@ input[type="text"], input[type="number"], input[type="password"] {
   outline: none;
 }
 
-input::placeholder, select::placeholder {
+input::placeholder,
+select::placeholder {
   color: rgba(255, 255, 255, 0.7);
 }
 
-input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -231,7 +253,9 @@ select:focus {
   color: #ffffff;
 }
 
-input[type="text"]:focus, input[type="number"]:focus, input[type="password"]:focus {
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus {
   border: 1px solid rgba(255, 255, 255, 0.5);
   background: rgba(255, 255, 255, 0.15);
   color: #ffffff;
@@ -286,12 +310,15 @@ button:hover {
     margin: 10px 0;
   }
 
-  input, select, button {
+  input,
+  select,
+  button {
     font-size: 14px;
     padding: 8px;
   }
 
-  #downloadConfirmation, #loanConfirmation {
+  #downloadConfirmation,
+  #loanConfirmation {
     width: 90%;
     max-width: 300px;
     padding: 15px;
@@ -303,10 +330,10 @@ button:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 90%; 
+  width: 90%;
   max-width: 300px;
   padding: 10px;
-  background-color: #4caf50; 
+  background-color: #4caf50;
   color: white;
   font-size: 16px;
   border-radius: 5px;
@@ -343,12 +370,15 @@ button:hover {
     padding: 10px;
   }
 
-  input, select, button {
+  input,
+  select,
+  button {
     font-size: 12px;
     padding: 8px;
   }
 
-  #downloadConfirmation, #loanConfirmation {
+  #downloadConfirmation,
+  #loanConfirmation {
     width: 90%;
     padding: 10px;
   }
