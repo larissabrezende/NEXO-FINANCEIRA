@@ -35,7 +35,7 @@ function applyLoan() {
   );
 
   if (isNaN(loanAmount) || loanAmount <= 0 || loanAmount > 10000) {
-    alert(
+    displayErrorPopup(
       "Por favor, insira um valor válido para o empréstimo, até o limite de R$10.000."
     );
     return;
@@ -57,7 +57,9 @@ function confirmLoan() {
   const accountData = getAccountData(accountId);
 
   if (!accountData) {
-    alert("Número da conta inválido. Por favor, verifique e tente novamente.");
+    displayErrorPopup(
+      "Número da conta inválido. Por favor, verifique e tente novamente."
+    );
     return;
   }
 
@@ -207,7 +209,7 @@ function showBalance() {
   const accountData = getAccountData(accountId);
 
   if (!accountData) {
-    displayPopupMessage("errorMessage", "Número da conta inválido.", "red");
+    displayErrorPopup("Número da conta inválido.");
     return;
   }
 
@@ -253,13 +255,15 @@ function deposit() {
   );
 
   if (!isValidAmount(depositAmount)) {
-    alert("Por favor, insira um valor de depósito válido.");
+    displayErrorPopup("Por favor, insira um valor de depósito válido.");
     return;
   }
 
   const accountData = getAccountData(accountId);
   if (!accountData) {
-    alert("Número da conta inválido. Por favor, verifique e tente novamente.");
+    displayErrorPopup(
+      "Número da conta inválido. Por favor, verifique e tente novamente."
+    );
     return;
   }
 
@@ -291,7 +295,9 @@ function withdraw() {
     !isValidAmount(withdrawAmount) ||
     withdrawAmount > accountData.balance
   ) {
-    alert("Operação inválida: verifique o valor e o saldo disponível.");
+    displayErrorPopup(
+      "Operação inválida: verifique o valor e o saldo disponível."
+    );
     return;
   }
 
@@ -381,6 +387,22 @@ function displayPopupMessage(id, message, bgColor) {
   popup.textContent = message;
   document.body.appendChild(popup);
   setTimeout(() => popup.remove(), 2000);
+}
+
+function displayErrorPopup(message) {
+  const errorContainer = document.getElementById("errorContainer");
+
+  errorContainer.innerHTML = "";
+
+  const errorPopup = document.createElement("div");
+  errorPopup.className = "error-popup";
+  errorPopup.textContent = message;
+
+  errorContainer.appendChild(errorPopup);
+
+  setTimeout(() => {
+    errorPopup.remove();
+  }, 2000);
 }
 
 function updateBalanceMessage(balance) {

@@ -18,26 +18,27 @@
         <span class="close-button" onclick="closeIntroModal()">×</span>
         <h2>Bem-vindo(a) ao Nexo Financeira</h2>
         <p>Veja como utilizar as principais funções:</p>
-       <div class="list-modal">
-        <ul>
-          <li>
-            <strong>Criar Conta:</strong> Escolha o tipo de conta, informe seu
-            nome e crie uma senha.
-          </li>
-          <li>
-            <strong>Gerenciar Conta:</strong> Use o número da conta para
-            visualizar saldo, fazer depósitos, saques e solicitar empréstimos.
-          </li>
-          <li>
-            <strong>Empréstimo:</strong> Disponível para contas Empresarial e
-            Premium. Clique em "Empréstimo" e siga as instruções para confirmar.
-          </li>
-          <li>
-            <strong>Extrato:</strong> Após realizar uma transação, você pode
-            baixar o extrato da conta em PDF.
-          </li>
-        </ul>
-       </div>
+        <div class="list-modal">
+          <ul>
+            <li>
+              <strong>Criar Conta:</strong> Escolha o tipo de conta, informe seu
+              nome e crie uma senha.
+            </li>
+            <li>
+              <strong>Gerenciar Conta:</strong> Use o número da conta para
+              visualizar saldo, fazer depósitos, saques e solicitar empréstimos.
+            </li>
+            <li>
+              <strong>Empréstimo:</strong> Disponível para contas Empresarial e
+              Premium. Clique em "Empréstimo" e siga as instruções para
+              confirmar.
+            </li>
+            <li>
+              <strong>Extrato:</strong> Após realizar uma transação, você pode
+              baixar o extrato da conta em PDF.
+            </li>
+          </ul>
+        </div>
         <button onclick="closeIntroModal()" class="modal-button">
           Entendi
         </button>
@@ -123,6 +124,10 @@
               margin-top: 10px;
             "
           ></p>
+
+          <!-- Contêiner para exibir mensagens de erro -->
+          <div id="errorContainer"></div>
+
           <input
             type="number"
             id="accountId"
@@ -253,3 +258,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   </body>
 </html>
+
