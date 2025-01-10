@@ -1,31 +1,3 @@
-English
-
-#Nexo Financeira
-
-Description:
-
-Nexo Financeira is a fictional web app for financial management. It allows users to create accounts, make deposits and withdrawals, request loans, and download PDF statements. With a responsive design and form validations, it provides an intuitive and secure user experience.
-
-Features:
-
-- Account creation (Personal, Business, and Premium).
-- Transactions: deposits, withdrawals, and loans.
-- Balance display and PDF statement generation.
-- Interactive feedback for success or error actions.
-
-Technologies:
-
-- HTML, CSS, JavaScript
-
-How to run the project:
-
-Clone the repository.
-Open the index.html file in your browser.
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-Português
-
 #Nexo Financeira
 
 Descrição:
